@@ -1,5 +1,11 @@
 import { useSelector } from "react-redux";
 
+/**
+ * Word component - creates an array from the stored string
+ * maps through the array and renders a letter
+ * the correct array values is matched with the letters to change the background
+ * gameEnd changes the styling of the letter
+ */
 export const Word = ({ gameEnd }) => {
     const round = useSelector(
         (state) => state.data.rounds[state.data.currentRound]
@@ -20,6 +26,9 @@ export const Word = ({ gameEnd }) => {
     );
 };
 
+/**
+ * Placeholder component for each individual letter/tile
+ */
 const Placeholder = ({ children, correct }) => {
     return (
         <div

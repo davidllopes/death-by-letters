@@ -1,3 +1,8 @@
+/**
+ * Standard button component
+ * Renders pill shaped button
+ * Using "short-circuit" condition for className - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND
+ */
 export const Button = ({ children, className, onClick }) => {
     return (
         <button

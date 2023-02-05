@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Button } from "./Button";
-import { Letter } from "./Letter";
+import { Letter } from "./Letters/Letter";
 
 /**
  * Instructions overlay window

@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newRound } from "./store/roundsReducer";
 // utility functions
-import { checkHasWon } from "./utils/gameControl";
+import { checkHasWon, loadRandomWord } from "./utils/gameControl";
 // components imports
 import { Button } from "./components/Button";
 import { Hangman } from "./components/Hangman";
 import { Instructions } from "./components/Instructions";
-import { Letters } from "./components/Letters";
+import { Letters } from "./components/Letters/Letters";
 import { Word } from "./components/Word";
 import { Header } from "./parts/Header";
 
@@ -126,18 +126,5 @@ function App() {
         </div>
     );
 }
-
-const loadRandomWord = (onDone, onError) => {
-    fetch("https://random-word-api.herokuapp.com/word")
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                onDone(result[0].toUpperCase());
-            },
-            (error) => {
-                onError(error);
-            }
-        );
-};
 
 export default App;
