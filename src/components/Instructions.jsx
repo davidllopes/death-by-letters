@@ -2,6 +2,12 @@ import { useEffect } from "react";
 import { Button } from "./Button";
 import { Letter } from "./Letter";
 
+/**
+ * Instructions overlay window
+ * Pressing a key will close the overlay
+ * Clicking the backdrop or the x button will close overlay
+ * Calls Letter component to show example
+ */
 export const Instructions = ({ handleClose }) => {
     useEffect(() => {
         window.addEventListener("keyup", handleClose);
@@ -11,17 +17,23 @@ export const Instructions = ({ handleClose }) => {
         };
     }, [handleClose]);
 
+    //returns elements for overlay
     return (
         <div
-            className={`instuctions w-full h-full fixed top-0 left-0 flex items-center justify-center backdrop-blur-sm bg-slate-900 bg-opacity-40`}
+            className={`instuctions w-full h-full fixed top-0 left-0 flex items-center justify-center `}
         >
-            <div className="instractions-box relative w-full max-w-md min-w-[60vw] min-h-[60vh] bg-pink-100 rounded-xl p-10">
+            <div
+                className="instructions__backdrop absolute w-full h-full top-0 left-0 backdrop-blur-sm bg-slate-900 bg-opacity-40"
+                onClick={handleClose}
+            ></div>
+            <div className="instractions__box relative w-full max-w-md min-w-[60vw] min-h-[60vh] bg-pink-100 rounded-xl p-5 md:p-10 ">
                 <Button
                     className={`absolute right-5 top-5 pl-2.5 pr-2.5 pt-0.5 pb-1 text-xl`}
                     onClick={handleClose}
                 >
                     ×
                 </Button>
+                {/**Add styling using tailwind prose */}
                 <article className="prose">
                     <h2 className=" text-indigo-900">How to play</h2>
                     <p>
