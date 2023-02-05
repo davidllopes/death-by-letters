@@ -1,13 +1,17 @@
+// react hooks, redux, reducer
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { newRound } from "./store/roundsReducer";
+// utility functions
+import { checkHasWon } from "./utils/gameControl";
+// components imports
 import { Button } from "./components/Button";
 import { Hangman } from "./components/Hangman";
 import { Instructions } from "./components/Instructions";
 import { Letters } from "./components/Letters";
 import { Word } from "./components/Word";
-import { newRound } from "./store/roundsReducer";
-import { checkHasWon } from "./utils/gameControl";
 
+// max wrong guesses
 const MAX_ATTEMPTS = 10;
 
 function App() {
@@ -70,7 +74,7 @@ function App() {
                             Loading...
                         </p>
                     ) : errorLoading ? (
-                        <p className=" text-2xl font-bold text-center text-red-700">
+                        <p className=" text-2xl font-bold text-center text-rose-700">
                             An error occurred while loading.
                         </p>
                     ) : (
