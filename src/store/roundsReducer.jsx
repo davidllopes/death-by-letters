@@ -6,8 +6,8 @@ const DEFAULT_STATE = {
     rounds: {
         1: {
             word: "SERENITY",
-            guessed: ["E", "T"],
-            incorrect: ["B", "Z", "L"],
+            guessed: [],
+            incorrect: [],
         },
     },
     score: 0,
