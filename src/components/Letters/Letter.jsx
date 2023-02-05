@@ -1,3 +1,9 @@
+/**
+ * Letter component
+ * displays different styling depending on condition:
+ * isCorrect/isIncorrect/disabled
+ */
+
 export const Letter = ({
     children,
     isCorrect,

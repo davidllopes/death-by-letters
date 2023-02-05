@@ -2,12 +2,18 @@
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addGuess, addIncorrect } from "../store/roundsReducer";
+import { addGuess, addIncorrect } from "../../store/roundsReducer";
 import { Letter } from "./Letter";
 
+/**
+ * Letters component manages the correct/incorrect state for each individual letter
+ * Generates an A to Z array and maps through it to display all letters
+ * Dispatches correct/incorrect states
+ */
 export const Letters = ({ round, gameEnd }) => {
     const dispatch = useDispatch();
 
+    // checks letters on click/key press - useCallback hook for useEffect availability
     const checkLetter = useCallback(
         (letter) => {
             if (round.word.indexOf(letter) >= 0) {
@@ -19,11 +25,12 @@ export const Letters = ({ round, gameEnd }) => {
         [dispatch, round]
     );
 
+    // handles key when pressed - useCallback hook for useEffect availability
     const handleKey = useCallback(
         ({ key }) => {
             if (key.length === 1) {
                 const l = key.toUpperCase();
-                console.log(isLetter(l));
+                //checks if key is a letter and sends it to dispatch controller function
                 if (isLetter(l)) {
                     checkLetter(l);
                 }
@@ -32,6 +39,7 @@ export const Letters = ({ round, gameEnd }) => {
         [checkLetter]
     );
 
+    // keyup event controller
     useEffect(() => {
         window.addEventListener("keyup", handleKey);
 
@@ -40,8 +48,10 @@ export const Letters = ({ round, gameEnd }) => {
         };
     }, [handleKey]);
 
+    // renders letter buttons grid - wraps in flex box
+    // uses Letter component
     return (
-        <div className="flex flex-wrap justify-center place-items-center col-end-1 gap-2 max-w-sm md:max-w-xs">
+        <div className="flex flex-wrap justify-center gap-2 max-w-sm md:max-w-xs">
             {generateLetters("A", "Z").map((letter) => (
                 <Letter
                     key={letter}
@@ -74,6 +84,9 @@ const generateLetters = (min, max) => {
     return list;
 };
 
+/**
+ * checks if letter character code is within A-Z range
+ */
 const isLetter = (letter) => {
     return (
         letter.charCodeAt(0) >= "A".charCodeAt(0) &&
