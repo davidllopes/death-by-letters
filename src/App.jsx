@@ -55,6 +55,7 @@ function App() {
     /**
      * Returns Header section
      * Loading/error state messages
+     * Welcome message
      * Hangman drawing component
      * Letters/keyboard component
      * Feedback message
