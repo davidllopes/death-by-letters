@@ -1,5 +1,5 @@
 // react hooks, redux, reducer
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newRound } from "./store/roundsReducer";
 // utility functions
@@ -34,7 +34,7 @@ function App() {
     /**
      * Start a new game function - calls the fetch function and saves a new word or returns an error
      */
-    const startNewRound = () => {
+    const startNewRound = useCallback(() => {
         setIsLoading(true);
         const onDone = (word) => {
             dispatch(newRound({ word: word }));
@@ -46,7 +46,7 @@ function App() {
         };
         //fetch random word
         loadRandomWord(onDone, onError);
-    };
+    }, [dispatch]);
 
     // game state variables
     const hasLost = atttemptsRemain < 1;
@@ -81,6 +81,18 @@ function App() {
                             An error occurred while loading. <br />
                             Check your internet connection.
                         </p>
+                    ) : data.currentRound === 0 ? (
+                        <article className="prose text-center">
+                            <h2 className="text-indigo-900 text-2xl">
+                                Welcome!
+                            </h2>
+                            <p>
+                                As this is your first time, click on the
+                                Instructions button to know more <br /> or just
+                                start the game!
+                            </p>
+                            <Button onClick={startNewRound}>Start game</Button>
+                        </article>
                     ) : (
                         <div className="w-full">
                             <div className="w-full flex flex-col md:flex-row gap-5 items-center justify-around md:items-end">

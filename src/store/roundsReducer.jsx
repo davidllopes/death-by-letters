@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const DEFAULT_STATE = {
-    currentRound: 1,
-    nextId: 2,
+    currentRound: 0,
+    nextId: 1,
     rounds: {
-        1: {
-            word: "SERENITY",
-            guessed: [],
-            incorrect: [],
-        },
+        0: { word: "", guessed: [], incorrect: [] },
     },
     score: 0,
 };
@@ -30,12 +26,12 @@ export const dataSlice = createSlice({
     reducers: {
         // start a new round (word) - will insert a new entry and increment the nextId
         newRound: (state, action) => {
-            state.rounds[state.nextId] = {
+            state.currentRound = state.nextId;
+            state.rounds[state.currentRound] = {
                 word: action.payload.word,
                 guessed: [],
                 incorrect: [],
             };
-            state.currentRound = state.nextId;
             state.nextId++;
             saveData(state);
         },

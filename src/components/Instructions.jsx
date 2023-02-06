@@ -53,9 +53,9 @@ export const Instructions = ({ handleClose }) => {
                     </p>
                     <p>
                         Tap one of the letters{" "}
-                        <Letter handleClick={handleClose}>Z</Letter> or press a
-                        key on your keyboard. For each correct letter, you get
-                        10 points added to your score. Enjoy!
+                        <Letter handleClick={() => {}}>Z</Letter> or press a key
+                        on your keyboard. For each correct letter, you get 10
+                        points added to your score. Enjoy!
                     </p>
                 </article>
             </div>
