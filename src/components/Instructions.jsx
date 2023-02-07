@@ -26,7 +26,7 @@ export const Instructions = ({ handleClose }) => {
                 className="instructions__backdrop absolute w-full h-full top-0 left-0 backdrop-blur-sm bg-slate-900 bg-opacity-40"
                 onClick={handleClose}
             ></div>
-            <div className="instractions__box relative w-full max-w-md min-w-[60vw] min-h-[60vh] bg-pink-100 rounded-xl p-5 md:p-10 ">
+            <div className="instractions__box relative w-full max-w-2xl min-h-[50vh] bg-pink-100 rounded-xl p-5 md:p-10 ">
                 <Button
                     className={`absolute right-5 top-5 pl-2.5 pr-2.5 pt-0.5 pb-1 text-xl`}
                     onClick={handleClose}
@@ -34,7 +34,7 @@ export const Instructions = ({ handleClose }) => {
                     ×
                 </Button>
                 {/**Add styling using tailwind prose */}
-                <article className="prose">
+                <article className="prose max-w-full">
                     <h2 className=" text-indigo-900">How to play</h2>
                     <p>
                         The classic guess the word game. For each round, you'll
