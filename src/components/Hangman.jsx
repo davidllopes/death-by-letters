@@ -35,7 +35,7 @@ export const Hangman = () => {
     return (
         <img
             className={`mix-blend-multiply w-32 mx-auto transition-all ${transform}`}
-            src={`./assets/imgs/hangmandrawings/state${hangState}.GIF`}
+            src={`./static/assets/imgs/hangmandrawings/state${hangState}.GIF`}
             alt=""
         />
     );
